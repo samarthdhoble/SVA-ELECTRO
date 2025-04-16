@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | Swa-Electro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f9ff;
+      color: #1e3a5f;
+      scroll-behavior: smooth;
+    }
+    header {
+      background-color: #ffffff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      color: #0074d9;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    nav a {
+      color: #1e3a5f;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #0074d9;
+    }
+    .products-hero {
+      background: linear-gradient(to right, #e6f0ff, #ffffff);
+      color: #1e3a5f;
+      text-align: center;
+      padding: 5rem 2rem 3rem 2rem;
+      animation: fadeInDown 1.5s ease;
+    }
+    .products-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .products-hero p {
+      font-size: 1.2rem;
+      color: #345678;
+    }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 3rem 2rem;
+      gap: 2rem;
+      background-color: #ffffff;
+    }
+    .product-card {
+      background: lightgrey;
+      border-radius: 12px;
+      width: 260px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .product-card h3 {
+      padding: 1rem;
+      font-size: 1.2rem;
+      color: #005fa3;
+    }
+    .product-card p {
+      padding: 0 1rem 1rem;
+      font-size: 0.95rem;
+      color: #333;
+    }
+    .contact-btn {
+      display: inline-block;
+      margin: 1rem auto 2rem;
+      padding: 0.6rem 1.5rem;
+      background-color: #0074d9;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .contact-btn:hover {
+      background-color: #005fa3;
+    }
+    footer {
+      background-color: #e6f0ff;
+      color: #1e3a5f;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+    footer a {
+      color: #0074d9;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Swa-Electro</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="products-hero">
+    <h1>Our Products</h1>
+    <p>Redefining urban mobility with efficient electric solutions.</p>
+  </section>
+
+  <section class="product-grid" id="productGrid">
+    <!-- Products will be injected here -->
+  </section>
+
+  <footer id="contact">
+    <p>Contact us: info@swaelectro.com | +91-XXXXXXXXXX</p>
+    <p>&copy; 2025 Swa-Electro. All rights reserved.</p>
+    <p>
+      <a href="#">LinkedIn</a> | <a href="#">Instagram</a> | <a href="#">Support</a>
+    </p>
+  </footer>
+
+  <script>
+    const products = [
+      {
+        image: 'evbus.jpg',
+        title: 'Smart Buses',
+        description: 'Lightweight, compact, perfect for daily city commutes with zero emissions.'
+      },
+      {
+        image: 'evbus3.png',
+        title: 'Mini-Bus',
+        description: 'Reliable and economical option for urban and rural transport solutions.'
+      },
+      {
+        image: 'Screenshot 2025-04-14 185528.png',
+        title: 'Battery Swap Unit',
+        description: 'Fast battery switching technology for continuous operations and logistics.'
+      }
+    ];
+
+    const productGrid = document.getElementById('productGrid');
+    products.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.title}">
+        <h3>${product.title}</h3>
+        <p>${product.description}</p>
+        <a class="contact-btn" href="#contact">Contact Sales Team</a>
+      `;
+      productGrid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
