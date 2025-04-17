@@ -52,19 +52,6 @@ img {
     display: block;
 }
 
-/* Custom Cursor */
-.cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.3);
-    pointer-events: none;
-    mix-blend-mode: difference;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease;
-    z-index: 9999;
-}
 
 /* Loader */
 .loader {
@@ -211,15 +198,42 @@ nav {
     transition: var(--transition);
 }
 
-/* Hero Section */
-.hero {
+
+
+/* .hero {
     height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-}
+    background-image: url('A-futuristic-sleek-car-illuminated-by-neon-green-and-purple-lights-reflecting-abstract-neon-patterns-on-its-polished-body-as-it-drives-through-a-high-tech-city-at-night.webp');
+    background-size: cover;
+    background-position: center;
+   
+} */
+
+
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('img/electric-vehicle-charging_23-2151951201.avif') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+  }
+
+
+
+  .hero-text {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  }
+  
+  
 
 .video-container {
     position: absolute;
@@ -242,7 +256,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(10, 37, 64, 0.9), rgba(10, 37, 64, 0.7));
+    /* background: linear-gradient(to right, rgba(10, 37, 64, 0.9), rgba(10, 37, 64, 0.7)); */
 }
 
 .hero-content {

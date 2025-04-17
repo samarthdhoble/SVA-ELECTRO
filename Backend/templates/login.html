@@ -3,28 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Registration</title>
+    <title>SWA Electro - Authentication</title>
     <style>
-        /* Root Variables */
         :root {
-            --primary-color: #0f3d2e;
-            --secondary-color: #1e6045;
-            --accent-color: #34d399;
-            --nav-color: #124734;
-            --background-color: #0a1f1a;
-            --light-bg: #1a2e25;
-            --metallic: #b7cbb5;
-            --metallic-light: #d5e8d4;
-            --text-color: #f8fafc;
-            --transition: all 0.3s ease;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --text-color: #333;
+            --light-gray: #f5f7fa;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #64748b;
+            --success-color: #10b981;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             --border-radius: 8px;
         }
 
-
-        
-
-        /* Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -33,733 +25,391 @@
         }
 
         body {
-            background-color: var(--background-color);
+            background-color: var(--light-gray);
             color: var(--text-color);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-        }
-
-        /* Navigation Bar */
-        nav {
-            background-color: var(--nav-color);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            color: var(--metallic);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-color);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Main Container */
-        .container {
-            flex: 1;
-            display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 2rem;
+            padding: 20px;
         }
 
-        .form-container {
-            background-color: var(--light-bg);
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background-color: white;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            width: 100%;
-            max-width: 450px;
             overflow: hidden;
-            position: relative;
         }
 
-        /* Form Tabs */
-        .form-tabs {
+        .header {
+            padding: 30px 0 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: var(--dark-gray);
+            font-size: 16px;
+        }
+
+        .tabs {
             display: flex;
-            border-bottom: 1px solid rgba(183, 203, 181, 0.2);
+            border-bottom: 1px solid var(--medium-gray);
         }
 
         .tab {
             flex: 1;
             text-align: center;
-            padding: 1rem;
+            padding: 16px;
             cursor: pointer;
             font-weight: 600;
-            transition: var(--transition);
-            position: relative;
+            color: var(--dark-gray);
+            transition: all 0.3s ease;
         }
 
         .tab.active {
-            color: var(--accent-color);
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
         }
 
-        .tab-indicator {
-            position: absolute;
-            bottom: 0;
-            height: 3px;
-            width: 50%;
-            background-color: var(--accent-color);
-            transition: var(--transition);
-        }
-
-        /* Form Content */
-        .form-content {
-            padding: 2rem;
-        }
-
-        .form-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-            text-align: center;
+        .tab-content {
+            padding: 30px;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
+            margin-bottom: 20px;
         }
 
-        .form-group label {
+        label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: var(--metallic);
+            margin-bottom: 8px;
             font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            background-color: var(--primary-color);
-            border: 1px solid rgba(183, 203, 181, 0.3);
-            border-radius: var(--border-radius);
             color: var(--text-color);
-            font-size: 1rem;
-            transition: var(--transition);
         }
 
-        .form-control:focus {
+        input, select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+
+        input:focus, select:focus {
             outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.2);
+            border-color: var(--primary-color);
         }
 
-        select.form-control {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23b7cbb5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            padding-right: 2.5rem;
+        .role-selector {
+            display: flex;
+            margin-bottom: 24px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 4px;
+        }
+
+        .role-option {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .role-option.active {
+            background-color: white;
+            box-shadow: var(--shadow);
+            color: var(--primary-color);
         }
 
         .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
+            display: block;
+            width: 100%;
+            padding: 14px;
             border: none;
             border-radius: var(--border-radius);
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
-            width: 100%;
-            font-size: 1rem;
-            text-align: center;
+            transition: all 0.3s ease;
         }
 
         .btn:hover {
-            background-color: #2bbb85;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 211, 153, 0.3);
+            background-color: var(--secondary-color);
         }
 
         .form-footer {
-            margin-top: 1.5rem;
             text-align: center;
-            color: var(--metallic);
+            margin-top: 24px;
+            color: var(--dark-gray);
         }
 
         .form-footer a {
-            color: var(--accent-color);
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 500;
-            transition: var(--transition);
         }
 
         .form-footer a:hover {
             text-decoration: underline;
         }
 
-        /* Form Animations */
-        .form-slide {
+        .hidden {
             display: none;
-            animation: fadeIn 0.5s ease forwards;
         }
 
-        .form-slide.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Dynamic Form Fields */
-        .dynamic-fields {
-            transition: var(--transition);
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-        }
-
-        .dynamic-fields.active {
-            max-height: 500px;
-            opacity: 1;
-            margin-top: 1.5rem;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
+        /* Responsive adjustments */
+        @media (max-width: 520px) {
             .container {
-                padding: 1rem;
+                box-shadow: none;
             }
-
-            .form-content {
-                padding: 1.5rem;
+            
+            .tab-content {
+                padding: 20px;
             }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 1rem;
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .form-tabs {
-                flex-direction: row;
-            }
-
-            .form-content {
-                padding: 1.2rem;
-            }
-        }
-
-        /* Password Visibility Toggle */
-        .password-toggle {
-            position: absolute;
-            right: 1rem;
-            top: 2.5rem;
-            cursor: pointer;
-            color: var(--metallic);
-            transition: var(--transition);
-        }
-
-        .password-toggle:hover {
-            color: var(--accent-color);
-        }
-
-        /* Form Validation Styles */
-        .form-control.error {
-            border-color: #e53e3e;
-        }
-
-        .error-message {
-            color: #e53e3e;
-            font-size: 0.85rem;
-            margin-top: 0.25rem;
-            display: none;
-        }
-
-        .error-message.visible {
-            display: block;
-        }
-
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 1.5rem;
-            height: 1.5rem;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--primary-color);
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 0.5rem;
-            vertical-align: middle;
-            display: none;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .btn.loading .loading {
-            display: inline-block;
-        }
-
-        .btn.loading {
-            pointer-events: none;
-            opacity: 0.8;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="logo">SecureAccess</div>
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
-
-    <!-- Main Container -->
     <div class="container">
-        <div class="form-container">
-            <!-- Form Tabs -->
-            <div class="form-tabs">
-                <div class="tab active" data-tab="login">Login</div>
-                <div class="tab" data-tab="register">Register</div>
-                <div class="tab-indicator"></div>
-            </div>
-
-            <!-- Form Content -->
-            <div class="form-content">
-                <!-- Login Form -->
-                <div class="form-slide active" id="login-form">
-                    <h2 class="form-title">Welcome Back</h2>
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label for="loginType">Login Type</label>
-                            <select class="form-control" id="loginType">
-                                <option value="government">Government Login</option>
-                                <option value="company">Company Login</option>
-                                <option value="client">Client Login</option>
-                            </select>
-                        </div>
-
-                        <!-- Government Login Fields (Default) -->
-                        <div class="dynamic-fields active" id="government-fields">
-                            <div class="form-group">
-                                <label for="governmentId">Government ID</label>
-                                <input type="text" class="form-control" id="governmentId" placeholder="Enter your government ID">
-                                <div class="error-message" id="governmentId-error">Please enter a valid government ID</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="governmentPassword">Password</label>
-                                <input type="password" class="form-control" id="governmentPassword" placeholder="Enter your password">
-                                <span class="password-toggle" data-target="governmentPassword">👁️</span>
-                                <div class="error-message" id="governmentPassword-error">Password is required</div>
-                            </div>
-                        </div>
-
-                        <!-- Company Login Fields -->
-                        <div class="dynamic-fields" id="company-fields">
-                            <div class="form-group">
-                                <label for="companyEmail">Company Email</label>
-                                <input type="email" class="form-control" id="companyEmail" placeholder="Enter your company email">
-                                <div class="error-message" id="companyEmail-error">Please enter a valid company email</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="companyKey">Company Key</label>
-                                <input type="password" class="form-control" id="companyKey" placeholder="Enter your company key">
-                                <span class="password-toggle" data-target="companyKey">👁️</span>
-                                <div class="error-message" id="companyKey-error">Company key is required</div>
-                            </div>
-                        </div>
-
-                        <!-- Client Login Fields -->
-                        <div class="dynamic-fields" id="client-fields">
-                            <div class="form-group">
-                                <label for="clientUsername">Username</label>
-                                <input type="text" class="form-control" id="clientUsername" placeholder="Enter your username">
-                                <div class="error-message" id="clientUsername-error">Username is required</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="clientEmail">Email</label>
-                                <input type="email" class="form-control" id="clientEmail" placeholder="Enter your email">
-                                <div class="error-message" id="clientEmail-error">Please enter a valid email</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="clientPhone">Phone Number</label>
-                                <input type="tel" class="form-control" id="clientPhone" placeholder="Enter your phone number">
-                                <div class="error-message" id="clientPhone-error">Please enter a valid phone number</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="clientPassword">Password</label>
-                                <input type="password" class="form-control" id="clientPassword" placeholder="Enter your password">
-                                <span class="password-toggle" data-target="clientPassword">👁️</span>
-                                <div class="error-message" id="clientPassword-error">Password is required</div>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn" id="loginBtn">
-                            <span class="loading"></span>
-                            <span class="btn-text">Login</span>
-                        </button>
-                    </form>
-                    <div class="form-footer">
-                        <p>Forgot your password? <a href="#">Reset it here</a></p>
+        <div class="header">
+            <h1>SWA Electro</h1>
+            <p>Welcome to the future of electric transportation</p>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" id="login-tab">Login</div>
+            <div class="tab" id="register-tab">Register</div>
+        </div>
+        
+        <div class="tab-content">
+            <!-- Login Form -->
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email or Username</label>
+                    <input type="text" id="login-email" placeholder="Enter your email or username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
+                </div>
+                
+                <button type="submit" class="btn">Login</button>
+                
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#" id="switch-to-register">Register now</a></p>
+                </div>
+            </form>
+            
+            <!-- Register Form -->
+            <form id="register-form" class="hidden">
+                <div class="role-selector">
+                    <div class="role-option active" data-role="client">Client</div>
+                    <div class="role-option" data-role="business">Business</div>
+                    <div class="role-option" data-role="government">Government</div>
+                </div>
+                
+                <!-- Government Fields -->
+                <div id="government-fields" class="hidden">
+                    <div class="form-group">
+                        <label for="gov-email">Government Email</label>
+                        <input type="email" id="gov-email" placeholder="Enter government email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="department">Department Name</label>
+                        <input type="text" id="department" placeholder="Enter department name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gov-id">Government ID Code</label>
+                        <input type="text" id="gov-id" placeholder="Enter government ID code" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gov-password">Password</label>
+                        <input type="password" id="gov-password" placeholder="Create a password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gov-confirm-password">Confirm Password</label>
+                        <input type="password" id="gov-confirm-password" placeholder="Confirm your password" required>
                     </div>
                 </div>
-
-                <!-- Registration Form -->
-                <div class="form-slide" id="register-form">
-                    <h2 class="form-title">Create Account</h2>
-                    <form id="registerForm">
-                        <div class="form-group">
-                            <label for="fullName">Full Name</label>
-                            <input type="text" class="form-control" id="fullName" placeholder="Enter your full name">
-                            <div class="error-message" id="fullName-error">Full name is required</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
-                            <div class="error-message" id="email-error">Please enter a valid email</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
-                            <div class="error-message" id="phone-error">Please enter a valid phone number</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Create a password">
-                            <span class="password-toggle" data-target="password">👁️</span>
-                            <div class="error-message" id="password-error">Password must be at least 8 characters</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirmPassword">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
-                            <span class="password-toggle" data-target="confirmPassword">👁️</span>
-                            <div class="error-message" id="confirmPassword-error">Passwords do not match</div>
-                        </div>
-                        <button type="submit" class="btn" id="registerBtn">
-                            <span class="loading"></span>
-                            <span class="btn-text">Register</span>
-                        </button>
-                    </form>
-                    <div class="form-footer">
-                        <p>By registering, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+                
+                <!-- Business Fields -->
+                <div id="business-fields" class="hidden">
+                    <div class="form-group">
+                        <label for="business-name">Business Name</label>
+                        <input type="text" id="business-name" placeholder="Enter business name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="business-email">Business Email</label>
+                        <input type="email" id="business-email" placeholder="Enter business email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registration-number">Business Registration Number</label>
+                        <input type="text" id="registration-number" placeholder="Enter registration number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="business-phone">Phone Number</label>
+                        <input type="tel" id="business-phone" placeholder="Enter phone number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="business-address">Address</label>
+                        <input type="text" id="business-address" placeholder="Enter business address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="business-password">Password</label>
+                        <input type="password" id="business-password" placeholder="Create a password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="business-confirm-password">Confirm Password</label>
+                        <input type="password" id="business-confirm-password" placeholder="Confirm your password" required>
                     </div>
                 </div>
-            </div>
+                
+                <!-- Client Fields -->
+                <div id="client-fields">
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="client-email">Email</label>
+                        <input type="email" id="client-email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="client-phone">Phone Number</label>
+                        <input type="tel" id="client-phone" placeholder="Enter your phone number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="client-password">Password</label>
+                        <input type="password" id="client-password" placeholder="Create a password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="client-confirm-password">Confirm Password</label>
+                        <input type="password" id="client-confirm-password" placeholder="Confirm your password" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Register</button>
+                
+                <div class="form-footer">
+                    <p>Already have an account? <a href="#" id="switch-to-login">Login now</a></p>
+                </div>
+            </form>
         </div>
     </div>
 
     <script>
-        // DOM Elements
-        const tabs = document.querySelectorAll('.tab');
-        const tabIndicator = document.querySelector('.tab-indicator');
-        const formSlides = document.querySelectorAll('.form-slide');
-        const loginType = document.getElementById('loginType');
-        const dynamicFields = document.querySelectorAll('.dynamic-fields');
-        const passwordToggles = document.querySelectorAll('.password-toggle');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const loginBtn = document.getElementById('loginBtn');
-        const registerBtn = document.getElementById('registerBtn');
+        // Tab switching
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const switchToRegister = document.getElementById('switch-to-register');
+        const switchToLogin = document.getElementById('switch-to-login');
 
-        // Initialize Tab Indicator Position
-        function initTabIndicator() {
-            const activeTab = document.querySelector('.tab.active');
-            tabIndicator.style.left = activeTab.offsetLeft + 'px';
-            tabIndicator.style.width = activeTab.offsetWidth + 'px';
+        function showLoginForm() {
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
         }
 
-        // Tab Switching
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Update active tab
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
+        function showRegisterForm() {
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        }
+
+        loginTab.addEventListener('click', showLoginForm);
+        registerTab.addEventListener('click', showRegisterForm);
+        switchToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            showRegisterForm();
+        });
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLoginForm();
+        });
+
+        // Role selection
+        const roleOptions = document.querySelectorAll('.role-option');
+        const governmentFields = document.getElementById('government-fields');
+        const businessFields = document.getElementById('business-fields');
+        const clientFields = document.getElementById('client-fields');
+
+        function showRoleFields(role) {
+            // Hide all fields first
+            governmentFields.classList.add('hidden');
+            businessFields.classList.add('hidden');
+            clientFields.classList.add('hidden');
+
+            // Show the selected role fields
+            if (role === 'government') {
+                governmentFields.classList.remove('hidden');
+            } else if (role === 'business') {
+                businessFields.classList.remove('hidden');
+            } else if (role === 'client') {
+                clientFields.classList.remove('hidden');
+            }
+        }
+
+        roleOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove active class from all options
+                roleOptions.forEach(opt => opt.classList.remove('active'));
                 
-                // Move tab indicator
-                tabIndicator.style.left = tab.offsetLeft + 'px';
-                tabIndicator.style.width = tab.offsetWidth + 'px';
+                // Add active class to clicked option
+                option.classList.add('active');
                 
-                // Show corresponding form
-                const targetForm = tab.getAttribute('data-tab');
-                formSlides.forEach(slide => {
-                    slide.classList.remove('active');
-                    if (slide.id === `${targetForm}-form`) {
-                        slide.classList.add('active');
-                    }
-                });
+                // Show fields based on selected role
+                const role = option.getAttribute('data-role');
+                showRoleFields(role);
             });
         });
 
-        // Dynamic Form Fields based on Login Type
-        loginType.addEventListener('change', () => {
-            const selectedType = loginType.value;
-            
-            dynamicFields.forEach(field => {
-                field.classList.remove('active');
-                if (field.id === `${selectedType}-fields`) {
-                    field.classList.add('active');
-                }
-            });
-        });
+        // Initialize with client role selected
+        showRoleFields('client');
 
-        // Password Visibility Toggle
-        passwordToggles.forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const targetId = toggle.getAttribute('data-target');
-                const passwordField = document.getElementById(targetId);
-                
-                if (passwordField.type === 'password') {
-                    passwordField.type = 'text';
-                    toggle.textContent = '🔒';
-                } else {
-                    passwordField.type = 'password';
-                    toggle.textContent = '👁️';
-                }
-            });
-        });
-
-        // Form Validation
-        function validateEmail(email) {
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
-        }
-
-        function validatePhone(phone) {
-            const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
-            return re.test(String(phone));
-        }
-
-        function showError(inputId, message) {
-            const input = document.getElementById(inputId);
-            const errorElement = document.getElementById(`${inputId}-error`);
-            
-            input.classList.add('error');
-            errorElement.textContent = message;
-            errorElement.classList.add('visible');
-        }
-
-        function clearError(inputId) {
-            const input = document.getElementById(inputId);
-            const errorElement = document.getElementById(`${inputId}-error`);
-            
-            input.classList.remove('error');
-            errorElement.classList.remove('visible');
-        }
-
-        // Login Form Submission
+        // Form submission (prevent default for demo)
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            let isValid = true;
-            const selectedType = loginType.value;
-            
-            // Validate Government Login
-            if (selectedType === 'government') {
-                const governmentId = document.getElementById('governmentId').value.trim();
-                const governmentPassword = document.getElementById('governmentPassword').value;
-                
-                if (governmentId === '') {
-                    showError('governmentId', 'Government ID is required');
-                    isValid = false;
-                } else {
-                    clearError('governmentId');
-                }
-                
-                if (governmentPassword === '') {
-                    showError('governmentPassword', 'Password is required');
-                    isValid = false;
-                } else {
-                    clearError('governmentPassword');
-                }
-            }
-            
-            // Validate Company Login
-            else if (selectedType === 'company') {
-                const companyEmail = document.getElementById('companyEmail').value.trim();
-                const companyKey = document.getElementById('companyKey').value;
-                
-                if (!validateEmail(companyEmail)) {
-                    showError('companyEmail', 'Please enter a valid company email');
-                    isValid = false;
-                } else {
-                    clearError('companyEmail');
-                }
-                
-                if (companyKey === '') {
-                    showError('companyKey', 'Company key is required');
-                    isValid = false;
-                } else {
-                    clearError('companyKey');
-                }
-            }
-            
-            // Validate Client Login
-            else if (selectedType === 'client') {
-                const clientUsername = document.getElementById('clientUsername').value.trim();
-                const clientEmail = document.getElementById('clientEmail').value.trim();
-                const clientPhone = document.getElementById('clientPhone').value.trim();
-                const clientPassword = document.getElementById('clientPassword').value;
-                
-                if (clientUsername === '') {
-                    showError('clientUsername', 'Username is required');
-                    isValid = false;
-                } else {
-                    clearError('clientUsername');
-                }
-                
-                if (!validateEmail(clientEmail)) {
-                    showError('clientEmail', 'Please enter a valid email');
-                    isValid = false;
-                } else {
-                    clearError('clientEmail');
-                }
-                
-                if (!validatePhone(clientPhone)) {
-                    showError('clientPhone', 'Please enter a valid phone number');
-                    isValid = false;
-                } else {
-                    clearError('clientPhone');
-                }
-                
-                if (clientPassword === '') {
-                    showError('clientPassword', 'Password is required');
-                    isValid = false;
-                } else {
-                    clearError('clientPassword');
-                }
-            }
-            
-            // If form is valid, submit
-            if (isValid) {
-                // Show loading state
-                loginBtn.classList.add('loading');
-                loginBtn.querySelector('.btn-text').textContent = 'Logging in...';
-                
-                // Simulate API call
-                setTimeout(() => {
-                    // Reset loading state
-                    loginBtn.classList.remove('loading');
-                    loginBtn.querySelector('.btn-text').textContent = 'Login';
-                    
-                    // Show success message (in a real app, you would redirect to dashboard)
-                    alert(`${selectedType.charAt(0).toUpperCase() + selectedType.slice(1)} login successful!`);
-                }, 2000);
-            }
+            alert('Login form submitted!');
         });
 
-        // Registration Form Submission
         registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            let isValid = true;
-            
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            
-            if (fullName === '') {
-                showError('fullName', 'Full name is required');
-                isValid = false;
-            } else {
-                clearError('fullName');
-            }
-            
-            if (!validateEmail(email)) {
-                showError('email', 'Please enter a valid email');
-                isValid = false;
-            } else {
-                clearError('email');
-            }
-            
-            if (!validatePhone(phone)) {
-                showError('phone', 'Please enter a valid phone number');
-                isValid = false;
-            } else {
-                clearError('phone');
-            }
-            
-            if (password.length < 8) {
-                showError('password', 'Password must be at least 8 characters');
-                isValid = false;
-            } else {
-                clearError('password');
-            }
-            
-            if (password !== confirmPassword) {
-                showError('confirmPassword', 'Passwords do not match');
-                isValid = false;
-            } else {
-                clearError('confirmPassword');
-            }
-            
-            // If form is valid, submit
-            if (isValid) {
-                // Show loading state
-                registerBtn.classList.add('loading');
-                registerBtn.querySelector('.btn-text').textContent = 'Registering...';
-                
-                // Simulate API call
-                setTimeout(() => {
-                    // Reset loading state
-                    registerBtn.classList.remove('loading');
-                    registerBtn.querySelector('.btn-text').textContent = 'Register';
-                    
-                    // Show success message (in a real app, you would redirect to verification page)
-                    alert('Registration successful! Please check your email to verify your account.');
-                }, 2000);
-            }
+            const activeRole = document.querySelector('.role-option.active').getAttribute('data-role');
+            alert(`Register form submitted for role: ${activeRole}`);
         });
-
-        // Initialize Tab Indicator on Page Load
-        window.addEventListener('load', initTabIndicator);
-
-        // Handle Window Resize for Tab Indicator
-        window.addEventListener('resize', initTabIndicator);
     </script>
 </body>
 </html>
