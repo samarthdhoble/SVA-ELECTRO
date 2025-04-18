@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SWA Electro - Authentication</title>
+    <title>SWA - Electro - Authentication</title>
     <style>
         :root {
-            --primary-color: #3a86ff;
-            --secondary-color: #8338ec;
-            --text-color: #333;
-            --light-gray: #f5f7fa;
-            --medium-gray: #e2e8f0;
-            --dark-gray: #64748b;
-            --success-color: #10b981;
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --text-color: #1f2937;
+            --light-gray: #f9fafb;
+            --medium-gray: #e5e7eb;
+            --dark-gray: #6b7280;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            --border-radius: 8px;
+            --border-radius: 10px;
         }
 
         * {
@@ -148,7 +147,7 @@
         }
 
         .btn:hover {
-            background-color: var(--secondary-color);
+            background-color: var(--primary-hover);
         }
 
         .form-footer {
@@ -186,7 +185,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>SWA Electro</h1>
+            <h1>SWA - Electro</h1>
             <p>Welcome to the future of electric transportation</p>
         </div>
         
@@ -217,10 +216,13 @@
             
             <!-- Register Form -->
             <form id="register-form" class="hidden">
+                <!-- Hidden input for role flag -->
+                <input type="hidden" id="role-flag" name="role-flag" value="3">
+                
                 <div class="role-selector">
-                    <div class="role-option active" data-role="client">Client</div>
-                    <div class="role-option" data-role="business">Business</div>
-                    <div class="role-option" data-role="government">Government</div>
+                    <div class="role-option active" data-role="client" data-flag="3">Client</div>
+                    <div class="role-option" data-role="business" data-flag="1">Business</div>
+                    <div class="role-option" data-role="government" data-flag="2">Government</div>
                 </div>
                 
                 <!-- Government Fields -->
@@ -334,6 +336,7 @@
         const registerForm = document.getElementById('register-form');
         const switchToRegister = document.getElementById('switch-to-register');
         const switchToLogin = document.getElementById('switch-to-login');
+        const roleFlag = document.getElementById('role-flag');
 
         function showLoginForm() {
             loginTab.classList.add('active');
@@ -360,13 +363,17 @@
             showLoginForm();
         });
 
-        // Role selection
+        // Role selection and flag setting
         const roleOptions = document.querySelectorAll('.role-option');
         const governmentFields = document.getElementById('government-fields');
         const businessFields = document.getElementById('business-fields');
         const clientFields = document.getElementById('client-fields');
 
-        function showRoleFields(role) {
+        function showRoleFields(role, flag) {
+            // Set the hidden flag value
+            roleFlag.value = flag;
+            console.log(`Role selected: ${role}, Flag set to: ${flag}`);
+            
             // Hide all fields first
             governmentFields.classList.add('hidden');
             businessFields.classList.add('hidden');
@@ -390,14 +397,17 @@
                 // Add active class to clicked option
                 option.classList.add('active');
                 
-                // Show fields based on selected role
+                // Get role and flag values
                 const role = option.getAttribute('data-role');
-                showRoleFields(role);
+                const flag = option.getAttribute('data-flag');
+                
+                // Show fields based on selected role and set flag
+                showRoleFields(role, flag);
             });
         });
 
-        // Initialize with client role selected
-        showRoleFields('client');
+        // Initialize with client role selected (flag = 3)
+        showRoleFields('client', '3');
 
         // Form submission (prevent default for demo)
         loginForm.addEventListener('submit', (e) => {
@@ -408,7 +418,16 @@
         registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const activeRole = document.querySelector('.role-option.active').getAttribute('data-role');
-            alert(`Register form submitted for role: ${activeRole}`);
+            const flag = roleFlag.value;
+            alert(`Register form submitted for role: ${activeRole} with flag: ${flag}`);
+            
+            // In a real application, you would send the flag value to your backend
+            // Example with form data:
+            // const formData = new FormData(registerForm);
+            // fetch('/api/register', {
+            //     method: 'POST',
+            //     body: formData
+            // });
         });
     </script>
 </body>
