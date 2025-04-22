@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SWA Electro - Authentication</title>
+    <title>SWA - Electro - Authentication</title>
     <style>
         :root {
-            --primary-color: #3a86ff;
-            --secondary-color: #8338ec;
-            --text-color: #333;
-            --light-gray: #f5f7fa;
-            --medium-gray: #e2e8f0;
-            --dark-gray: #64748b;
-            --success-color: #10b981;
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --text-color: #1f2937;
+            --light-gray: #f9fafb;
+            --medium-gray: #e5e7eb;
+            --dark-gray: #6b7280;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            --border-radius: 8px;
+            --border-radius: 10px;
         }
 
         * {
@@ -148,7 +147,7 @@
         }
 
         .btn:hover {
-            background-color: var(--secondary-color);
+            background-color: var(--primary-hover);
         }
 
         .form-footer {
@@ -183,150 +182,138 @@
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>SWA Electro</h1>
-            <p>Welcome to the future of electric transportation</p>
-        </div>
-        
-        <div class="tabs">
-            <div class="tab active" id="login-tab">Login</div>
-            <div class="tab" id="register-tab">Register</div>
-        </div>
-        
-        <div class="tab-content">
-            <!-- Login Form -->
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="login-email">Email or Username</label>
-                    <input type="text" id="login-email" placeholder="Enter your email or username" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" placeholder="Enter your password" required>
-                </div>
-                
-                <button type="submit" class="btn">Login</button>
-                
-                <div class="form-footer">
-                    <p>Don't have an account? <a href="#" id="switch-to-register">Register now</a></p>
-                </div>
-            </form>
-            
-            <!-- Register Form -->
-            <form id="register-form" class="hidden">
-                <div class="role-selector">
-                    <div class="role-option active" data-role="client">Client</div>
-                    <div class="role-option" data-role="business">Business</div>
-                    <div class="role-option" data-role="government">Government</div>
-                </div>
-                
-                <!-- Government Fields -->
-                <div id="government-fields" class="hidden">
-                    <div class="form-group">
-                        <label for="gov-email">Government Email</label>
-                        <input type="email" id="gov-email" placeholder="Enter government email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="department">Department Name</label>
-                        <input type="text" id="department" placeholder="Enter department name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="gov-id">Government ID Code</label>
-                        <input type="text" id="gov-id" placeholder="Enter government ID code" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="gov-password">Password</label>
-                        <input type="password" id="gov-password" placeholder="Create a password" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="gov-confirm-password">Confirm Password</label>
-                        <input type="password" id="gov-confirm-password" placeholder="Confirm your password" required>
-                    </div>
-                </div>
-                
-                <!-- Business Fields -->
-                <div id="business-fields" class="hidden">
-                    <div class="form-group">
-                        <label for="business-name">Business Name</label>
-                        <input type="text" id="business-name" placeholder="Enter business name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="business-email">Business Email</label>
-                        <input type="email" id="business-email" placeholder="Enter business email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="registration-number">Business Registration Number</label>
-                        <input type="text" id="registration-number" placeholder="Enter registration number" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="business-phone">Phone Number</label>
-                        <input type="tel" id="business-phone" placeholder="Enter phone number" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="business-address">Address</label>
-                        <input type="text" id="business-address" placeholder="Enter business address" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="business-password">Password</label>
-                        <input type="password" id="business-password" placeholder="Create a password" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="business-confirm-password">Confirm Password</label>
-                        <input type="password" id="business-confirm-password" placeholder="Confirm your password" required>
-                    </div>
-                </div>
-                
-                <!-- Client Fields -->
-                <div id="client-fields">
-                    <div class="form-group">
-                        <label for="full-name">Full Name</label>
-                        <input type="text" id="full-name" placeholder="Enter your full name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="client-email">Email</label>
-                        <input type="email" id="client-email" placeholder="Enter your email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="client-phone">Phone Number</label>
-                        <input type="tel" id="client-phone" placeholder="Enter your phone number" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="client-password">Password</label>
-                        <input type="password" id="client-password" placeholder="Create a password" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="client-confirm-password">Confirm Password</label>
-                        <input type="password" id="client-confirm-password" placeholder="Confirm your password" required>
-                    </div>
-                </div>
-                
-                <button type="submit" class="btn">Register</button>
-                
-                <div class="form-footer">
-                    <p>Already have an account? <a href="#" id="switch-to-login">Login now</a></p>
-                </div>
-            </form>
-        </div>
+<div class="container">
+    <div class="header">
+        <h1>SWA - Electro</h1>
+        <p>Welcome to the future of electric transportation</p>
     </div>
 
-    <script>
+    <div class="tabs">
+        <div class="tab active" id="login-tab">Login</div>
+        <div class="tab" id="register-tab">Register</div>
+    </div>
+
+    <div class="tab-content">
+        <!-- Login Form -->
+        <form id="login-form">
+            <div class="form-group">
+                <label for="login-email">Email or Username</label>
+                <input type="text" id="login-email" name="login-email" placeholder="Enter your email or username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="login-password" placeholder="Enter your password" required>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+            <div class="form-footer">
+                <p>Don't have an account? <a href="#" id="switch-to-register">Register now</a></p>
+            </div>
+        </form>
+
+        <!-- Register Form -->
+        <form id="register-form" class="hidden" action="http://localhost:5000/register" method="POST">
+
+            <input type="hidden" id="role-flag" name="role-flag" value="3">
+
+            <div class="role-selector">
+                <div class="role-option active" data-role="client" data-flag="3">Client</div>
+                <div class="role-option" data-role="business" data-flag="1">Business</div>
+                <div class="role-option" data-role="government" data-flag="2">Government</div>
+            </div>
+
+            <!-- Government Fields -->
+            <div id="government-fields" class="hidden">
+                <div class="form-group">
+                    <label for="gov-email">Government Email</label>
+                    <input type="email" id="gov-email" name="gov-email" placeholder="Enter government email" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department Name</label>
+                    <input type="text" id="department" name="department" placeholder="Enter department name" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="gov-id">Government ID Code</label>
+                    <input type="text" id="gov-id" name="gov-id" placeholder="Enter government ID code" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="gov-password">Password</label>
+                    <input type="password" id="gov-password" name="gov-password" placeholder="Create a password" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="gov-confirm-password">Confirm Password</label>
+                    <input type="password" id="gov-confirm-password" name="gov-confirm-password" placeholder="Confirm your password" required disabled>
+                </div>
+            </div>
+
+            <!-- Business Fields -->
+            <div id="business-fields" class="hidden">
+                <div class="form-group">
+                    <label for="business-name">Business Name</label>
+                    <input type="text" id="business-name" name="business-name" placeholder="Enter business name" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="business-email">Business Email</label>
+                    <input type="email" id="business-email" name="business-email" placeholder="Enter business email" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="registration-number">Business Registration Number</label>
+                    <input type="text" id="registration-number" name="registration-number" placeholder="Enter registration number" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="business-phone">Phone Number</label>
+                    <input type="tel" id="business-phone" name="business-phone" placeholder="Enter phone number" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="business-address">Address</label>
+                    <input type="text" id="business-address" name="business-address" placeholder="Enter business address" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="business-password">Password</label>
+                    <input type="password" id="business-password" name="business-password" placeholder="Create a password" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="business-confirm-password">Confirm Password</label>
+                    <input type="password" id="business-confirm-password" name="business-confirm-password" placeholder="Confirm your password" required disabled>
+                </div>
+            </div>
+
+            <!-- Client Fields -->
+            <div id="client-fields">
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="client-email">Email</label>
+                    <input type="email" id="client-email" name="client-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="client-phone">Phone Number</label>
+                    <input type="tel" id="client-phone" name="client-phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="client-password">Password</label>
+                    <input type="password" id="client-password" name="client-password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="client-confirm-password">Confirm Password</label>
+                    <input type="password" id="client-confirm-password" name="client-confirm-password" placeholder="Confirm your password" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+
+            <div class="form-footer">
+                <p>Already have an account? <a href="#" id="switch-to-login">Login now</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <<script>
         // Tab switching
         const loginTab = document.getElementById('login-tab');
         const registerTab = document.getElementById('register-tab');
@@ -334,82 +321,90 @@
         const registerForm = document.getElementById('register-form');
         const switchToRegister = document.getElementById('switch-to-register');
         const switchToLogin = document.getElementById('switch-to-login');
-
-        function showLoginForm() {
+    
+        loginTab.addEventListener('click', () => {
             loginTab.classList.add('active');
             registerTab.classList.remove('active');
             loginForm.classList.remove('hidden');
             registerForm.classList.add('hidden');
-        }
-
-        function showRegisterForm() {
+        });
+    
+        registerTab.addEventListener('click', () => {
             registerTab.classList.add('active');
             loginTab.classList.remove('active');
             registerForm.classList.remove('hidden');
             loginForm.classList.add('hidden');
-        }
-
-        loginTab.addEventListener('click', showLoginForm);
-        registerTab.addEventListener('click', showRegisterForm);
+        });
+    
         switchToRegister.addEventListener('click', (e) => {
             e.preventDefault();
-            showRegisterForm();
+            registerTab.click();
         });
+    
         switchToLogin.addEventListener('click', (e) => {
             e.preventDefault();
-            showLoginForm();
+            loginTab.click();
         });
-
-        // Role selection
+    
+        // Role switch logic
         const roleOptions = document.querySelectorAll('.role-option');
-        const governmentFields = document.getElementById('government-fields');
-        const businessFields = document.getElementById('business-fields');
+        const roleFlag = document.getElementById('role-flag');
+    
         const clientFields = document.getElementById('client-fields');
-
-        function showRoleFields(role) {
-            // Hide all fields first
-            governmentFields.classList.add('hidden');
-            businessFields.classList.add('hidden');
-            clientFields.classList.add('hidden');
-
-            // Show the selected role fields
-            if (role === 'government') {
-                governmentFields.classList.remove('hidden');
-            } else if (role === 'business') {
-                businessFields.classList.remove('hidden');
-            } else if (role === 'client') {
-                clientFields.classList.remove('hidden');
-            }
+        const businessFields = document.getElementById('business-fields');
+        const governmentFields = document.getElementById('government-fields');
+    
+        function disableAllInputs() {
+            clientFields.querySelectorAll('input').forEach(input => input.disabled = true);
+            businessFields.querySelectorAll('input').forEach(input => input.disabled = true);
+            governmentFields.querySelectorAll('input').forEach(input => input.disabled = true);
         }
-
+    
+        function enableInputs(container) {
+            container.querySelectorAll('input').forEach(input => input.disabled = false);
+        }
+    
         roleOptions.forEach(option => {
             option.addEventListener('click', () => {
-                // Remove active class from all options
-                roleOptions.forEach(opt => opt.classList.remove('active'));
-                
-                // Add active class to clicked option
+                // Update active class
+                roleOptions.forEach(o => o.classList.remove('active'));
                 option.classList.add('active');
-                
-                // Show fields based on selected role
-                const role = option.getAttribute('data-role');
-                showRoleFields(role);
+    
+                // Set role flag
+                const flag = option.getAttribute('data-flag');
+                roleFlag.value = flag;
+    
+                // Hide all and disable inputs
+                clientFields.classList.add('hidden');
+                businessFields.classList.add('hidden');
+                governmentFields.classList.add('hidden');
+                disableAllInputs();
+    
+                // Show relevant field and enable inputs
+                if (flag === '1') {
+                    businessFields.classList.remove('hidden');
+                    enableInputs(businessFields);
+                } else if (flag === '2') {
+                    governmentFields.classList.remove('hidden');
+                    enableInputs(governmentFields);
+                } else {
+                    clientFields.classList.remove('hidden');
+                    enableInputs(clientFields);
+                }
             });
         });
-
-        // Initialize with client role selected
-        showRoleFields('client');
-
-        // Form submission (prevent default for demo)
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Login form submitted!');
-        });
-
+    
+        // Form submission safety
         registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const activeRole = document.querySelector('.role-option.active').getAttribute('data-role');
-            alert(`Register form submitted for role: ${activeRole}`);
+            // Ensure only the selected role's inputs are enabled
+            const flag = roleFlag.value;
+            if (flag !== '3') disableInputs(clientFields);
+            if (flag !== '1') disableInputs(businessFields);
+            if (flag !== '2') disableInputs(governmentFields);
         });
     </script>
+    
+    
+    
 </body>
 </html>
