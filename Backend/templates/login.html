@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -214,7 +215,7 @@
         </form>
 
         <!-- Register Form -->
-        <form id="register-form" class="hidden" action="http://localhost:5000/register" method="POST">
+        <form id="register-form" class="hidden" method="POST">
 
             <input type="hidden" id="role-flag" name="role-flag" value="3">
 
@@ -228,19 +229,19 @@
             <div id="government-fields" class="hidden">
                 <div class="form-group">
                     <label for="gov-email">Government Email</label>
-                    <input type="email" id="gov-email" name="gov-email" placeholder="Enter government email" required disabled>
+                    <input type="email" id="gov-email" name="email" placeholder="Enter government email" required disabled>
                 </div>
                 <div class="form-group">
                     <label for="department">Department Name</label>
-                    <input type="text" id="department" name="department" placeholder="Enter department name" required disabled>
+                    <input type="text" id="department" name="name" placeholder="Enter department name" required disabled>
                 </div>
                 <div class="form-group">
                     <label for="gov-id">Government ID Code</label>
-                    <input type="text" id="gov-id" name="gov-id" placeholder="Enter government ID code" required disabled>
+                    <input type="text" id="gov-id" name="code" placeholder="Enter government ID code" required disabled>
                 </div>
                 <div class="form-group">
                     <label for="gov-password">Password</label>
-                    <input type="password" id="gov-password" name="gov-password" placeholder="Create a password" required disabled>
+                    <input type="password" id="gov-password" name="password" placeholder="Create a password" required disabled>
                 </div>
                 <div class="form-group">
                     <label for="gov-confirm-password">Confirm Password</label>
@@ -252,27 +253,27 @@
             <div id="business-fields" class="hidden">
                 <div class="form-group">
                     <label for="business-name">Business Name</label>
-                    <input type="text" id="business-name" name="business-name" placeholder="Enter business name" required disabled>
+                    <input type="text" id="business-name" name="name" placeholder="Enter business name" required disabled>
                 </div>
                 <div class="form-group">
                     <label for="business-email">Business Email</label>
-                    <input type="email" id="business-email" name="business-email" placeholder="Enter business email" required disabled>
+                    <input type="email" id="business-email" name="email" placeholder="Enter business email" required disabled>
                 </div>
                 <div class="form-group">
                     <label for="registration-number">Business Registration Number</label>
-                    <input type="text" id="registration-number" name="registration-number" placeholder="Enter registration number" required disabled>
+                    <input type="text" id="registration-number" name="code" placeholder="Enter registration number" required disabled>
                 </div>
                 <div class="form-group">
                     <label for="business-phone">Phone Number</label>
-                    <input type="tel" id="business-phone" name="business-phone" placeholder="Enter phone number" required disabled>
+                    <input type="tel" id="business-phone" name="phonenumber" placeholder="Enter phone number" required disabled>
                 </div>
                 <div class="form-group">
                     <label for="business-address">Address</label>
-                    <input type="text" id="business-address" name="business-address" placeholder="Enter business address" required disabled>
+                    <input type="text" id="business-address" name="address" placeholder="Enter business address" required disabled>
                 </div>
                 <div class="form-group">
                     <label for="business-password">Password</label>
-                    <input type="password" id="business-password" name="business-password" placeholder="Create a password" required disabled>
+                    <input type="password" id="business-password" name="password" placeholder="Create a password" required disabled>
                 </div>
                 <div class="form-group">
                     <label for="business-confirm-password">Confirm Password</label>
@@ -284,19 +285,19 @@
             <div id="client-fields">
                 <div class="form-group">
                     <label for="full-name">Full Name</label>
-                    <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+                    <input type="text" id="full-name" name="fullname" placeholder="Enter your full name" required>
                 </div>
                 <div class="form-group">
                     <label for="client-email">Email</label>
-                    <input type="email" id="client-email" name="client-email" placeholder="Enter your email" required>
+                    <input type="email" id="client-email" name="email" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
                     <label for="client-phone">Phone Number</label>
-                    <input type="tel" id="client-phone" name="client-phone" placeholder="Enter your phone number" required>
+                    <input type="tel" id="client-phone" name="phonenumber" placeholder="Enter your phone number" required>
                 </div>
                 <div class="form-group">
                     <label for="client-password">Password</label>
-                    <input type="password" id="client-password" name="client-password" placeholder="Create a password" required>
+                    <input type="password" id="client-password" name="password" placeholder="Create a password" required>
                 </div>
                 <div class="form-group">
                     <label for="client-confirm-password">Confirm Password</label>
@@ -347,62 +348,63 @@
         });
     
         // Role switch logic
-        const roleOptions = document.querySelectorAll('.role-option');
-        const roleFlag = document.getElementById('role-flag');
+        // const roleOptions = document.querySelectorAll('.role-option');
+        // const roleFlag = document.getElementById('role-flag');
     
-        const clientFields = document.getElementById('client-fields');
-        const businessFields = document.getElementById('business-fields');
-        const governmentFields = document.getElementById('government-fields');
+        // const clientFields = document.getElementById('client-fields');
+        // const businessFields = document.getElementById('business-fields');
+        // const governmentFields = document.getElementById('government-fields');
     
-        function disableAllInputs() {
-            clientFields.querySelectorAll('input').forEach(input => input.disabled = true);
-            businessFields.querySelectorAll('input').forEach(input => input.disabled = true);
-            governmentFields.querySelectorAll('input').forEach(input => input.disabled = true);
-        }
+        // function disableAllInputs() {
+        //     clientFields.querySelectorAll('input').forEach(input => input.disabled = true);
+        //     businessFields.querySelectorAll('input').forEach(input => input.disabled = true);
+        //     governmentFields.querySelectorAll('input').forEach(input => input.disabled = true);
+        // }
     
-        function enableInputs(container) {
-            container.querySelectorAll('input').forEach(input => input.disabled = false);
-        }
+        // function enableInputs(container) {
+        //     container.querySelectorAll('input').forEach(input => input.disabled = false);
+        // }
     
-        roleOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                // Update active class
-                roleOptions.forEach(o => o.classList.remove('active'));
-                option.classList.add('active');
+        // roleOptions.forEach(option => {
+        //     option.addEventListener('click', () => {
+        //         // Update active class
+        //         roleOptions.forEach(o => o.classList.remove('active'));
+        //         option.classList.add('active');
     
-                // Set role flag
-                const flag = option.getAttribute('data-flag');
-                roleFlag.value = flag;
+        //         // Set role flag
+        //         const flag = option.getAttribute('data-flag');
+        //         roleFlag.value = flag;
     
-                // Hide all and disable inputs
-                clientFields.classList.add('hidden');
-                businessFields.classList.add('hidden');
-                governmentFields.classList.add('hidden');
-                disableAllInputs();
+        //         // Hide all and disable inputs
+        //         clientFields.classList.add('hidden');
+        //         businessFields.classList.add('hidden');
+        //         governmentFields.classList.add('hidden');
+        //         disableAllInputs();
     
-                // Show relevant field and enable inputs
-                if (flag === '1') {
-                    businessFields.classList.remove('hidden');
-                    enableInputs(businessFields);
-                } else if (flag === '2') {
-                    governmentFields.classList.remove('hidden');
-                    enableInputs(governmentFields);
-                } else {
-                    clientFields.classList.remove('hidden');
-                    enableInputs(clientFields);
-                }
-            });
-        });
+        //         // Show relevant field and enable inputs
+        //         if (flag === '1') {
+        //             businessFields.classList.remove('hidden');
+        //             enableInputs(businessFields);
+        //         } else if (flag === '2') {
+        //             governmentFields.classList.remove('hidden');
+        //             enableInputs(governmentFields);
+        //         } else {
+        //             clientFields.classList.remove('hidden');
+        //             enableInputs(clientFields);
+        //         }
+        //     });
+        // });
     
         // Form submission safety
-        registerForm.addEventListener('submit', (e) => {
-            // Ensure only the selected role's inputs are enabled
-            const flag = roleFlag.value;
-            if (flag !== '3') disableInputs(clientFields);
-            if (flag !== '1') disableInputs(businessFields);
-            if (flag !== '2') disableInputs(governmentFields);
-        });
+        // registerForm.addEventListener('submit', (e) => {
+        //     // Ensure only the selected role's inputs are enabled
+        //     const flag = roleFlag.value;
+        //     if (flag !== '3') disableInputs(clientFields);
+        //     if (flag !== '1') disableInputs(businessFields);
+        //     if (flag !== '2') disableInputs(governmentFields);
+        // });
     </script>
+    <script src={% static "registration.js" %}></script>
     
     
     

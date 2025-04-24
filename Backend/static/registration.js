@@ -3,16 +3,15 @@ document.querySelectorAll(".role-option").forEach((elem)=>{
         console.log(elem.innerHTML);
         
     if (elem.innerHTML == "Client") {
-        document.querySelector("#register-form").setAttribute("action","/login/1")
-         console.log(document.querySelector("#register-form").getAttribute("action")
-        );
-
+        document.querySelector("#register-form").setAttribute("action","/register/user/1")         
     }       
     else if (elem.innerHTML == "government") {
-        id=0
+        document.querySelector("#register-form").setAttribute("action","/register/user/2")        
+
     } 
     else if (elem.innerHTML == "Business") {
-        id=-1
+        document.querySelector("#register-form").setAttribute("action","/register/user/2")         
+        
     } 
     })
 })

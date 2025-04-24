@@ -11,12 +11,12 @@ def home(request):
 def loginuser(request):
     return render(request,"login.html")
 
-def loginuseraction(request,id):
+def registeruseraction(request,id):
     def check():
         user = authenticate(request, email=email, password=password)
 
         if user is not None:
-            login(request, user)  # 🔐 sets session
+            login(request, user)  
             return JsonResponse({
                 'msg' : "ok"
             }) # replace with your dashboard/home url
@@ -31,13 +31,12 @@ def loginuseraction(request,id):
             fullname=request.POST.get("fullname")
             phonenumber=request.POST.get("phonenumber")
             password=request.POST.get("password")
-            
+            print(id)
             user=User.objects.create_user(email=email,password=password,phonenumber=phonenumber)    
             Client.objects.create(login=user,fullname=fullname,phone_number=phonenumber)
             check()
-            return JsonResponse({
-                "status" : 200
-            })
+            return redirect("/product")
+
         elif id == 2:
             if request.method == "POST":
                 email=request.POST.get("email")
@@ -51,25 +50,20 @@ def loginuseraction(request,id):
                 user=User.objects.create_user(email=email,password=password,phonenumber=phonenumber)    
                 PrivateBussines.objects.create(login=user,business_name=name,address=address,registration_no=registration_no,phone_number=phonenumber)
                 check()
-                return JsonResponse({
-                    "status" : 200
-                })
+                return redirect("/product")
+
             
         else:
             if request.method == "POST":
                 email=request.POST.get("email")
                 name=request.POST.get("fullname")
                 code=request.POST.get("code")
-                phonenumber=request.POST.get("phonenumber")
-                address=request.POST.get("address")
                 password=request.POST.get("password")
 
                 User.objects.create_user(email=email,password=password,phonenumber=phonenumber)
                 user=User.objects.create_user(email=email,password=password,phonenumber=phonenumber)    
                 GovernmentDetails.objects.create(login=user,department=name,gov_id=code)
                 check()
-                return JsonResponse({
-                    "status" : 200
-                })
+                return redirect("/product")
 
             
