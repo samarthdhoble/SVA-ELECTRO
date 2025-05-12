@@ -6,7 +6,7 @@ document.querySelectorAll(".role-option").forEach((elem)=>{
         document.querySelector("#register-form").setAttribute("action","/register/user/1")         
     }       
     else if (elem.innerHTML == "government") {
-        document.querySelector("#register-form").setAttribute("action","/register/user/2")        
+        document.querySelector("#register-form").setAttribute("action","/register/user/3")        
 
     } 
     else if (elem.innerHTML == "Business") {

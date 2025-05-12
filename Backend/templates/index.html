@@ -30,7 +30,11 @@
                 <li><a href="/product.html">Products</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="">Login/Register</a></li>
+                {% if request.user.is_authenticated %}
+                <li>{{ request.user.email }}</li>
+                {% else %}
+                <li><a href="/login">Login/Register</a></li>
+                {% endif %}
             </ul>
             <div class="hamburger">
                 <span></span>
