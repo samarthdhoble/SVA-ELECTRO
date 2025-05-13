@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWA - Electro Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>SWA - Electro</h2>
+                <span class="admin-label">Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active" data-page="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="nav-item" data-page="orders">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Orders</span>
+                    </li>
+                    <li class="nav-item" data-page="products">
+                        <i class="fas fa-bus"></i>
+                        <span>Products</span>
+                    </li>
+                    <li class="nav-item" data-page="add-product">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Add Product</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="user-profile">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="profile">
+                        <img src="https://via.placeholder.com/40" alt="Admin">
+                        <span>Admin User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content">
+                <!-- Dashboard Page -->
+                <section id="dashboard" class="page active">
+                    <h1>Dashboard</h1>
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-icon orders">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Orders</h3>
+                                <p class="stat-number">248</p>
+                                <p class="stat-growth positive">+12% from last month</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon products">
+                                <i class="fas fa-bus"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Products</h3>
+                                <p class="stat-number">36</p>
+                                <p class="stat-growth positive">+5 new products</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon revenue">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Revenue</h3>
+                                <p class="stat-number">$1.2M</p>
+                                <p class="stat-growth positive">+18% from last month</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon customers">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Customers</h3>
+                                <p class="stat-number">1,240</p>
+                                <p class="stat-growth positive">+8% from last month</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-section">
+                        <h2>Recent Orders</h2>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Customer</th>
+                                        <th>Product</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#ORD-5289</td>
+                                        <td>John Smith</td>
+                                        <td>SWA - Electro Model X</td>
+                                        <td>2023-04-15</td>
+                                        <td><span class="status pending">Pending</span></td>
+                                        <td>$125,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>#ORD-5288</td>
+                                        <td>Sarah Johnson</td>
+                                        <td>SWA - Electro Charger Pro</td>
+                                        <td>2023-04-14</td>
+                                        <td><span class="status shipped">Shipped</span></td>
+                                        <td>$2,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>#ORD-5287</td>
+                                        <td>Metro Transit</td>
+                                        <td>SWA - Electro Fleet (5 units)</td>
+                                        <td>2023-04-12</td>
+                                        <td><span class="status delivered">Delivered</span></td>
+                                        <td>$750,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>#ORD-5286</td>
+                                        <td>Green City Tours</td>
+                                        <td>SWA - Electro Model S</td>
+                                        <td>2023-04-10</td>
+                                        <td><span class="status delivered">Delivered</span></td>
+                                        <td>$180,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Orders Page -->
+                <section id="orders" class="page">
+                    <h1>Track Orders</h1>
+                    <div class="filter-container">
+                        <div class="search-filter">
+                            <input type="text" id="order-search" placeholder="Search by customer or order ID">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="status-filter">
+                            <label for="status-select">Filter by Status:</label>
+                            <select id="status-select">
+                                <option value="all">All</option>
+                                <option value="pending">Pending</option>
+                                <option value="shipped">Shipped</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table" id="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer Name</th>
+                                    <th>Product Name</th>
+                                    <th>Quantity</th>
+                                    <th>Status</th>
+                                    <th>Order Date</th>
+                                    <th>Total Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#ORD-5289</td>
+                                    <td>John Smith</td>
+                                    <td>SWA - Electro Model X</td>
+                                    <td>1</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                    <td>2023-04-15</td>
+                                    <td>$125,000</td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-5288</td>
+                                    <td>Sarah Johnson</td>
+                                    <td>SWA - Electro Charger Pro</td>
+                                    <td>1</td>
+                                    <td><span class="status shipped">Shipped</span></td>
+                                    <td>2023-04-14</td>
+                                    <td>$2,500</td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-5287</td>
+                                    <td>Metro Transit</td>
+                                    <td>SWA - Electro Fleet</td>
+                                    <td>5</td>
+                                    <td><span class="status delivered">Delivered</span></td>
+                                    <td>2023-04-12</td>
+                                    <td>$750,000</td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-5286</td>
+                                    <td>Green City Tours</td>
+                                    <td>SWA - Electro Model S</td>
+                                    <td>1</td>
+                                    <td><span class="status delivered">Delivered</span></td>
+                                    <td>2023-04-10</td>
+                                    <td>$180,000</td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-5285</td>
+                                    <td>EcoTransit Solutions</td>
+                                    <td>SWA - Electro Model X</td>
+                                    <td>2</td>
+                                    <td><span class="status shipped">Shipped</span></td>
+                                    <td>2023-04-08</td>
+                                    <td>$250,000</td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-5284</td>
+                                    <td>Urban Mobility Inc.</td>
+                                    <td>SWA - Electro Charging Station</td>
+                                    <td>3</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                    <td>2023-04-07</td>
+                                    <td>$15,000</td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-5283</td>
+                                    <td>Clean Energy Transport</td>
+                                    <td>SWA - Electro Model S</td>
+                                    <td>1</td>
+                                    <td><span class="status cancelled">Cancelled</span></td>
+                                    <td>2023-04-05</td>
+                                    <td>$180,000</td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">Next</button>
+                    </div>
+                </section>
+
+                <!-- Products Page -->
+                <section id="products" class="page">
+                    <h1>Products</h1>
+                    <div class="filter-container">
+                        <div class="search-filter">
+                            <input type="text" id="product-search" placeholder="Search products">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="category-filter">
+                            <label for="category-select">Category:</label>
+                            <select id="category-select">
+                                <option value="all">All Categories</option>
+                                <option value="buses">Electric Buses</option>
+                                <option value="chargers">Charging Equipment</option>
+                                <option value="parts">Spare Parts</option>
+                                <option value="accessories">Accessories</option>
+                            </select>
+                        </div>
+                        <div class="price-filter">
+                            <label for="price-range">Price Range:</label>
+                            <select id="price-range">
+                                <option value="all">All Prices</option>
+                                <option value="0-1000">$0 - $1,000</option>
+                                <option value="1000-10000">$1,000 - $10,000</option>
+                                <option value="10000-100000">$10,000 - $100,000</option>
+                                <option value="100000+">$100,000+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x200?text=SWA - Electro+Model+X" alt="SWA - Electro Model X">
+                            </div>
+                            <div class="product-details">
+                                <h3>SWA - Electro Model X</h3>
+                                <p class="product-id">ID: PRD-001</p>
+                                <p class="product-category">Category: Electric Buses</p>
+                                <p class="product-price">$125,000</p>
+                                <p class="product-stock">In Stock: 8 units</p>
+                                <div class="product-features">
+                                    <p>Features:</p>
+                                    <ul>
+                                        <li>300 mile range</li>
+                                        <li>80 passenger capacity</li>
+                                        <li>Fast charging capability</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-primary edit-product" data-id="PRD-001">Edit</button>
+                                    <button class="btn-secondary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x200?text=SWA - Electro+Model+S" alt="SWA - Electro Model S">
+                            </div>
+                            <div class="product-details">
+                                <h3>SWA - Electro Model S</h3>
+                                <p class="product-id">ID: PRD-002</p>
+                                <p class="product-category">Category: Electric Buses</p>
+                                <p class="product-price">$180,000</p>
+                                <p class="product-stock">In Stock: 5 units</p>
+                                <div class="product-features">
+                                    <p>Features:</p>
+                                    <ul>
+                                        <li>400 mile range</li>
+                                        <li>100 passenger capacity</li>
+                                        <li>Advanced driver assistance</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-primary edit-product" data-id="PRD-002">Edit</button>
+                                    <button class="btn-secondary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x200?text=SWA - Electro+Charger+Pro" alt="SWA - Electro Charger Pro">
+                            </div>
+                            <div class="product-details">
+                                <h3>SWA - Electro Charger Pro</h3>
+                                <p class="product-id">ID: PRD-003</p>
+                                <p class="product-category">Category: Charging Equipment</p>
+                                <p class="product-price">$2,500</p>
+                                <p class="product-stock">In Stock: 25 units</p>
+                                <div class="product-features">
+                                    <p>Features:</p>
+                                    <ul>
+                                        <li>150kW fast charging</li>
+                                        <li>Smart grid integration</li>
+                                        <li>Remote monitoring</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-primary edit-product" data-id="PRD-003">Edit</button>
+                                    <button class="btn-secondary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x200?text=SWA - Electro+Charging+Station" alt="SWA - Electro Charging Station">
+                            </div>
+                            <div class="product-details">
+                                <h3>SWA - Electro Charging Station</h3>
+                                <p class="product-id">ID: PRD-004</p>
+                                <p class="product-category">Category: Charging Equipment</p>
+                                <p class="product-price">$5,000</p>
+                                <p class="product-stock">In Stock: 12 units</p>
+                                <div class="product-features">
+                                    <p>Features:</p>
+                                    <ul>
+                                        <li>Multiple charging ports</li>
+                                        <li>Weather-resistant design</li>
+                                        <li>Payment system integration</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-primary edit-product" data-id="PRD-004">Edit</button>
+                                    <button class="btn-secondary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x200?text=Battery+Pack+Replacement" alt="Battery Pack Replacement">
+                            </div>
+                            <div class="product-details">
+                                <h3>Battery Pack Replacement</h3>
+                                <p class="product-id">ID: PRD-005</p>
+                                <p class="product-category">Category: Spare Parts</p>
+                                <p class="product-price">$15,000</p>
+                                <p class="product-stock">In Stock: 10 units</p>
+                                <div class="product-features">
+                                    <p>Features:</p>
+                                    <ul>
+                                        <li>300kWh capacity</li>
+                                        <li>8-year warranty</li>
+                                        <li>Compatible with Model X and S</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-primary edit-product" data-id="PRD-005">Edit</button>
+                                    <button class="btn-secondary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x200?text=Diagnostic+Tool+Kit" alt="Diagnostic Tool Kit">
+                            </div>
+                            <div class="product-details">
+                                <h3>Diagnostic Tool Kit</h3>
+                                <p class="product-id">ID: PRD-006</p>
+                                <p class="product-category">Category: Accessories</p>
+                                <p class="product-price">$850</p>
+                                <p class="product-stock">In Stock: 15 units</p>
+                                <div class="product-features">
+                                    <p>Features:</p>
+                                    <ul>
+                                        <li>Comprehensive system diagnostics</li>
+                                        <li>Software updates included</li>
+                                        <li>Portable carrying case</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-primary edit-product" data-id="PRD-006">Edit</button>
+                                    <button class="btn-secondary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pagination">
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">Next</button>
+                    </div>
+                </section>
+
+                <!-- Add Product Page -->
+                <section id="add-product" class="page">
+                    <h1>Add New Product</h1>
+                    <form id="add-product-form" class="product-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="product-name">Product Name</label>
+                                <input type="text" id="product-name" placeholder="Enter product name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="product-category">Product Category</label>
+                                <select id="product-category" required>
+                                    <option value="">Select a category</option>
+                                    <option value="buses">Electric Buses</option>
+                                    <option value="chargers">Charging Equipment</option>
+                                    <option value="parts">Spare Parts</option>
+                                    <option value="accessories">Accessories</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="product-price">Price ($)</label>
+                                <input type="number" id="product-price" placeholder="Enter price" min="0" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="product-stock">Stock Quantity</label>
+                                <input type="number" id="product-stock" placeholder="Enter stock quantity" min="0" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-features">Features List</label>
+                            <textarea id="product-features" placeholder="Enter product features (one per line)" rows="5" required></textarea>
+                            <small>Enter each feature on a new line</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-image">Product Image</label>
+                            <div class="file-upload">
+                                <input type="file" id="product-image" accept="image/*">
+                                <label for="product-image" class="file-upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Choose an image</span>
+                                </label>
+                                <div id="file-name" class="file-name">No file chosen</div>
+                            </div>
+                            <div class="image-preview">
+                                <img id="image-preview" src="https://via.placeholder.com/300x200?text=Product+Image" alt="Product Image Preview">
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Add Product</button>
+                            <button type="reset" class="btn-secondary">Reset Form</button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Edit Product Modal -->
+                <div id="edit-product-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Edit Product</h2>
+                            <span class="close-modal">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <form id="edit-product-form" class="product-form">
+                                <input type="hidden" id="edit-product-id">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="edit-product-name">Product Name</label>
+                                        <input type="text" id="edit-product-name" placeholder="Enter product name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="edit-product-category">Product Category</label>
+                                        <select id="edit-product-category" required>
+                                            <option value="buses">Electric Buses</option>
+                                            <option value="chargers">Charging Equipment</option>
+                                            <option value="parts">Spare Parts</option>
+                                            <option value="accessories">Accessories</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="edit-product-price">Price ($)</label>
+                                        <input type="number" id="edit-product-price" placeholder="Enter price" min="0" step="0.01" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="edit-product-stock">Stock Quantity</label>
+                                        <input type="number" id="edit-product-stock" placeholder="Enter stock quantity" min="0" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-product-features">Features List</label>
+                                    <textarea id="edit-product-features" placeholder="Enter product features (one per line)" rows="5" required></textarea>
+                                    <small>Enter each feature on a new line</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-product-image">Product Image</label>
+                                    <div class="file-upload">
+                                        <input type="file" id="edit-product-image" accept="image/*">
+                                        <label for="edit-product-image" class="file-upload-label">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <span>Choose a new image</span>
+                                        </label>
+                                        <div id="edit-file-name" class="file-name">No file chosen</div>
+                                    </div>
+                                    <div class="image-preview">
+                                        <img id="edit-image-preview" src="https://via.placeholder.com/300x200?text=Product+Image" alt="Product Image Preview">
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-primary">Save Changes</button>
+                                    <button type="button" class="btn-secondary close-modal-btn">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
