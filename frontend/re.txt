@@ -1,0 +1,4 @@
+model
+images
+qty
+olectra
